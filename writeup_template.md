@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images_output/solidWhiteCurve.jpg "RoadExample1"
 
 ---
 
@@ -27,7 +27,7 @@ My pipeline consisted of 7 steps. First, I converted the images to grayscale, bl
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by using the LaneDetector class to process the image and produce the needed output. 
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+Here's an example output from a single frame. The dots are the results of lines found in the image and are sampled to produce the final bold line: 
 
 ![alt text][image1]
 
@@ -41,6 +41,8 @@ Another shortcoming could be extra lines created from other objects in the scene
 
 This is also subject to contrast levels between the lane marking and the surrounding pavement. Lines with overly smudged or faded edges might fail to yeild a strong enough gradient for canny to produce an edge.
 
+This approach will struggle when the lane lines curve or when the horizon changes dramatically as in an uphill or downhill state. More or less of the mask will be invalid and will consider pixels that don't contribute well to the solution.
+
 ### 3. Suggest possible improvements to your pipeline
 
 A possible improvement would be to run this algorithm over a large dataset and parameterize the settings that work best for different lighting and road conditions. The choice of blur size, canny threashold high, low value, and hough line transoform could vary for different conditions.
@@ -49,3 +51,4 @@ Another potential improvement could be to stabilize output over multiple frames 
 
 Another improvement would be to train a semantic neural network that could label the pixels of the image which which lane lines instead of masking. This would help ignore pixels that come from other objects.
 
+The mask shape could be dynamic and use road conditions. An intertial unit with a magnometer to detect bounces in the road and modify the mask.
