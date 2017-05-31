@@ -25,6 +25,8 @@ The goals / steps of this project are the following:
 
 My pipeline consisted of 7 steps. First, I converted the images to grayscale, blured slightly with gaussian blur, and ran a canny threshold to calculate the derivatives of the edge gradients. Then I masked a region of interest from the bottom corners to a vanishing point near the camera horizon and used this to remove edges from consideration. After that I used the HoughLinesP transformation to convert and find line segments in Hough space using polar coordinates. After seperating the left and right sloped lines, I sampled them into bins of points. Then I ran linear regression to find the best fit lines through those points. I encapsulated this into a python class LaneDetector.
 
+I had to add a few filters to help ignore spurious input. I ignore lines that are near horizontal. I also ignore positive slopped lines when they are on the right half of the image, and negatively slopped lines when they are on the left half. This helps to cull out noise and adds to line stability.
+
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by using the LaneDetector class to process the image and produce the needed output. 
 
 Here's an example output from a single frame. The dots are the results of lines found in the image and are sampled to produce the final bold line: 
