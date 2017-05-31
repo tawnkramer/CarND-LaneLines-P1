@@ -51,6 +51,6 @@ A possible improvement would be to run this algorithm over a large dataset and p
 
 Another potential improvement could be to stabilize output over multiple frames by comparing new results to old. Ransac or some similar filter could help ignore outliers. Or a PID filter could smooth otherwize sudden transitions.
 
-Another improvement would be to train a semantic neural network that could label the pixels of the image which which lane lines instead of masking. This would help ignore pixels that come from other objects.
+Another improvement would be to train a semantic neural network that could label the pixels of the image which are lane lines instead of masking. This would help ignore pixels that come from other objects.
 
-The mask shape could be dynamic and use road conditions. An intertial unit with a magnometer to detect bounces in the road and modify the mask.
+The mask shape could be dynamic and use road conditions. An intertial unit with a magnometer to detect bounces in the road could help modify the mask.
